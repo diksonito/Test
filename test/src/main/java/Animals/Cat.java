@@ -10,6 +10,17 @@ public class Cat extends DorogojeJivotnoje{
 	public String nameOfFood() {
 		// TODO Auto-generated method stub
 		return null;
+	
 	}
+	
+	//
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
