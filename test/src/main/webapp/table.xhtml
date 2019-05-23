@@ -1,0 +1,30 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Show all users table</title>
+</h:head>
+
+<h:body>
+	<h:form id="users">
+		<p:dataTable var="user" value="#{dtLazyView.lazyModel}"
+			paginator="true" rows="10"
+			paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+			rowsPerPageTemplate="5,10,15" selectionMode="single"
+			selection="#{dtLazyView.selectedCar}" id="userTable" lazy="true">
+			<p:ajax event="rowSelect" listener="#{dtLazyView.onRowSelect}"
+				update=":form:carDetail" oncomplete="PF('carDialog').show()" />
+			<p:column headerText="Username" sortBy="#{user.login}"
+				filterBy="#{user.login}">
+				<h:outputText value="#{user.login}" />
+			</p:column>
+			<p:column headerText="Password" sortBy="#{user.password}"
+				filterBy="#{user.password}">
+				<h:outputText value="#{user.password}" />
+			</p:column>
+		</p:dataTable>
+	</h:form>
+</h:body>
+</html>
